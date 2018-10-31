@@ -1,0 +1,18 @@
+Setting Up Angular From Scratch:
+	https://blog.angularindepth.com/setting-up-angular-from-scratch-1f518c65d8ab
+--------------------------------------------------------------------------------------
+
+Install Dev Dependancies
+	npm i --save-dev webpack typescript live-server
+
+Install Angular Dependancies
+	npm i --save core-js rxjs zone.js
+
+Install Angular
+	npm i --save @angular/core @angular/compiler @angular/common @angular/platform-browser @angular/platform-browser-dynamic
+
+// Config Typescript
+
+// Config Webpack
+
+// Config NPM scripts
