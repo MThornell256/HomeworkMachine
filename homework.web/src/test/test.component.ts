@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-main',
-    template: '<h1>Hello, {{name}}</h1>'
+    template: '<lm-arithmatic-game></lm-arithmatic-game>'
 })
 
 export class AppComponent {
-    name = 'Angular';
+    name = 'Angularz';
 }

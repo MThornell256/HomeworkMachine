@@ -10,5 +10,11 @@
     <app-main></app-main>
     <!-- THE SCRIPT NEEDS TO BE RAN AFTER THE APP-MAIN TAG-->
     <script src="build/bundle.js"></script>
+    <script>
+        // Debug Component
+        window.$comp = function(){
+            return ng.probe($0)._debugContext.component;
+        }
+    </script>
 </body>
 </html>

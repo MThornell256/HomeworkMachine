@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './test.component';
+import { ArithmaticGameModule } from "../games/arithmeticGame/arithmaticGame.module";
 
 @NgModule({
-    imports: [BrowserModule],
+    imports: [BrowserModule, ArithmaticGameModule],
     declarations: [AppComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 
 export class AppModule {
