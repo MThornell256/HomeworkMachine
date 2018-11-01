@@ -3,9 +3,7 @@ import 'zone.js/dist/zone';
 
 import { platformBrowserDynamic }
     from '@angular/platform-browser-dynamic';
-import {AppModule} from "./test/test.module";
 
-// import { AppModule } from './test/test.module';
-// import { ArithmaticGameModule } from './games/arithmeticGame/arithmaticGame.module';
+import {AppModule} from './components/app-main/AppMain.module';
 
 platformBrowserDynamic().bootstrapModule(AppModule);

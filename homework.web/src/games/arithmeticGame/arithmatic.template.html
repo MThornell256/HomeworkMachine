@@ -1,5 +1,7 @@
 <div>
     <div>Question: {{currentRoundQuestion}}</div>
-    <input/> <button>Check Answer</button>
+    <div *ngIf="showIncorrectAnswerStyle">WRONG ANSWER!</div>
+    <input type="number" #answerInput [value]="answerValue" (input)="answerValue = answerInput.value"/>
+    <button (click)="checkAnswer()">Check Answer</button>
 </div>
 <div id="test">Round Number: {{currentRoundNumber}} of {{totalRounds}}</div>

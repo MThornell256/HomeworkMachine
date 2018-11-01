@@ -8,6 +8,8 @@ import {AnswerState, GameRound, Opperator} from "./types";
 })
 export class ArithmaticGame {
 
+    answerValue: '';
+
     private gameRounds: GameRound[];
 
     currentRoundQuestion: string;
@@ -73,15 +75,28 @@ export class ArithmaticGame {
         return `${round.primaryNumber} ${opperatorString} ${round.secondaryNumber}`;
     }
 
+    private solve(round: GameRound): number {
+        switch(round.opperator) {
+            case Opperator.ADDITION:
+                return round.primaryNumber + round.secondaryNumber;
+            case Opperator.SUBTRACTION:
+                return round.primaryNumber - round.secondaryNumber;
+            case Opperator.DIVITION:
+                return round.primaryNumber / round.secondaryNumber;
+            case Opperator.MULTIPLICATION:
+                return round.primaryNumber * round.secondaryNumber;
+        }
+    }
+
     checkAnswer() {
 
-        const answer = 655;
-        const expectedAnswer = 666;
+        const round = this.getCurrentRound();
+        const actualAnswer = parseFloat(this.answerValue);
+        const expectedAnswer = this.solve(round);
 
-        const isCorrect = answer === expectedAnswer;
+        const isCorrect = actualAnswer === expectedAnswer;
 
         // Set Answer Flag
-        const round = this.getCurrentRound();
         if(round.answerState === AnswerState.UNANSWERED) {
             round.answerState = isCorrect
                 ? AnswerState.CORRECT
