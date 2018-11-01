@@ -1,8 +1,8 @@
 export enum Opperator {
-    ADDITION,
-    SUBTRACTION,
-    DIVITION,
-    MULTIPLICATION,
+    ADDITION = 'ADDITION',
+    SUBTRACTION = 'SUBTRACTION',
+    DIVISION = 'DIVISION',
+    MULTIPLICATION = 'MULTIPLICATION',
 }
 
 export enum AnswerState {

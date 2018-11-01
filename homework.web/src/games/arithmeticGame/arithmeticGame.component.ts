@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AnswerState, GameRound, Opperator} from "./types";
+import {ArithmerticGameService} from "../../services/ArithmaticGame.service";
 
 @Component({
     selector: 'lm-arithmatic-game',
@@ -8,7 +9,8 @@ import {AnswerState, GameRound, Opperator} from "./types";
 })
 export class ArithmaticGame {
 
-    answerValue: '';
+    answerValue = '';
+    answerValueRemainder = '';
 
     private gameRounds: GameRound[];
 
@@ -18,29 +20,17 @@ export class ArithmaticGame {
 
     showIncorrectAnswerStyle = false;
 
-    constructor() {
+    constructor(private service: ArithmerticGameService) {
 
         // init testing data; get from some service later
-        this.gameRounds = [
-            {
-                primaryNumber: 1,
-                secondaryNumber: 5,
-                opperator: Opperator.ADDITION,
-                answerState: AnswerState.UNANSWERED,
-            },
-            {
-                primaryNumber: 6,
-                secondaryNumber: 3,
-                opperator: Opperator.ADDITION,
-                answerState: AnswerState.UNANSWERED,
-            },
-            {
-                primaryNumber: 60,
-                secondaryNumber: 33,
-                opperator: Opperator.ADDITION,
-                answerState: AnswerState.UNANSWERED,
-            },
-        ];
+        this.gameRounds = this.service.generateRounds({
+            minValue: 0,
+            maxValue: 20,
+            roundCount: 10,
+
+            addition: true,
+            division: true,
+       });
 
         this.currentRoundNumber = 1;
         this.totalRounds = this.gameRounds.length;
@@ -52,6 +42,8 @@ export class ArithmaticGame {
 
         this.currentRoundQuestion = this.getRoundQuestion(this.getCurrentRound());
         this.showIncorrectAnswerStyle = false;
+        this.answerValue = '';
+        this.answerValueRemainder = '';
     }
 
     private getCurrentRound(): GameRound {
@@ -66,7 +58,7 @@ export class ArithmaticGame {
             opperatorString = '+';
         } else if(round.opperator == Opperator.SUBTRACTION) {
             opperatorString = '-';
-        } else if(round.opperator == Opperator.DIVITION) {
+        } else if(round.opperator == Opperator.DIVISION) {
             opperatorString = '/';
         } else if(round.opperator == Opperator.MULTIPLICATION) {
             opperatorString = 'X';
@@ -75,26 +67,16 @@ export class ArithmaticGame {
         return `${round.primaryNumber} ${opperatorString} ${round.secondaryNumber}`;
     }
 
-    private solve(round: GameRound): number {
-        switch(round.opperator) {
-            case Opperator.ADDITION:
-                return round.primaryNumber + round.secondaryNumber;
-            case Opperator.SUBTRACTION:
-                return round.primaryNumber - round.secondaryNumber;
-            case Opperator.DIVITION:
-                return round.primaryNumber / round.secondaryNumber;
-            case Opperator.MULTIPLICATION:
-                return round.primaryNumber * round.secondaryNumber;
-        }
-    }
-
     checkAnswer() {
 
         const round = this.getCurrentRound();
         const actualAnswer = parseFloat(this.answerValue);
-        const expectedAnswer = this.solve(round);
+        const expectedAnswer = this.service.solveRound(round);
 
-        const isCorrect = actualAnswer === expectedAnswer;
+        let isCorrect = actualAnswer === expectedAnswer;
+        if(round.opperator === Opperator.DIVISION) {
+            isCorrect = this.checkDivision(round, actualAnswer, parseFloat(this.answerValueRemainder))
+        }
 
         // Set Answer Flag
         if(round.answerState === AnswerState.UNANSWERED) {
@@ -116,5 +98,18 @@ export class ArithmaticGame {
             // Incorrect Answer
             this.showIncorrectAnswerStyle = true;
         }
+    }
+
+    private checkDivision(round: GameRound, value: number, remainders: number): boolean {
+
+        if (Math.floor(round.primaryNumber / round.secondaryNumber) !== value) {
+            return false;
+        }
+
+        if (round.primaryNumber % round.secondaryNumber !== remainders) {
+            return false;
+        }
+
+        return true;
     }
 }

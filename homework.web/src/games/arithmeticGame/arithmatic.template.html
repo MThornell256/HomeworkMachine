@@ -1,7 +1,20 @@
 <div>
     <div>Question: {{currentRoundQuestion}}</div>
-    <div *ngIf="showIncorrectAnswerStyle">WRONG ANSWER!</div>
-    <input type="number" #answerInput [value]="answerValue" (input)="answerValue = answerInput.value"/>
+    <div *ngIf="showIncorrectAnswerStyle">WRONG ANSWER! {{answerValue}}</div>
+    <input
+            type='number'
+            [(ngModel)]='answerValue'
+            (keyup.enter)="checkAnswer()"
+            placeholder="Answer..."/>
+
+    <input
+            type='number'
+            [(ngModel)]='answerValueRemainder'
+            (keyup.enter)="checkAnswer()"
+            placeholder="Remainder..."
+            *ngIf="getCurrentRound().opperator === 'DIVISION'"/>
+
     <button (click)="checkAnswer()">Check Answer</button>
+
 </div>
 <div id="test">Round Number: {{currentRoundNumber}} of {{totalRounds}}</div>
