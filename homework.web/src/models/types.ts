@@ -3,12 +3,19 @@ export interface UserProfile {
     username: string;
     exp: number;
     history: GameHistory[];
+    achievements: Achievement[];
 }
 
 export interface GameHistory {
     gameType: GameType;
     timestamp: Date;
     exp: number;
+}
+
+export interface Achievement {
+    name: string;
+    iconName: string;
+    hasObtained: boolean;
 }
 
 export enum GameType {

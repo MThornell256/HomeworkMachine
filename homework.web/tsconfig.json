@@ -9,6 +9,11 @@
     "lib": [
       "dom",
       "es2015"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@models/*" : ["models/*"],
+      "@services/*" : ["services/*"]
+    }
   }
 }
