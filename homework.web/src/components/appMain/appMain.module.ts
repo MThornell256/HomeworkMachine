@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppMain } from './AppMain.component';
+import { AppMain } from './appMain.component';
 import {ArithmaticGameModule} from "../../games/arithmeticGame/arithmaticGame.module";
 
 @NgModule({
