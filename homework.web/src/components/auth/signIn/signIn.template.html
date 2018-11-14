@@ -1,7 +1,12 @@
 <div>
-    Username
-    <input type="text">
-    Password
-    <input type="password">
-    <Button>Log In</Button>
+    <h1>Log In</h1>
+    <div>
+        Username
+        <input type="text" [(ngModel)]='username'>
+    </div>
+    <div>
+        Password
+        <input type="password" [(ngModel)]='password'>
+    </div>
+    <Button (click)="logIn()">Log In</Button>
 </div>

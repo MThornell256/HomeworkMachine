@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'auth-main',
@@ -6,7 +6,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AuthMainComponent implements OnInit {
-    constructor() { }
 
-    ngOnInit() { }
+    mode: string = AuthDisplayModes.SIGN_IN;
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 }
+
+export const AuthDisplayModes =
+{
+    SIGN_IN: 'SIGN IN',
+    SIGN_UP: 'SIGN UP',
+    FORGOT_PASSWORD: 'FORGOT PASSWORD',
+};

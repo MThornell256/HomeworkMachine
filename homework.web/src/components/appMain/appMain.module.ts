@@ -9,7 +9,7 @@ import { InfrastructureModule } from "../infrastructure/infrastructure.module";
 import {ArithmaticGameModule} from "../../games/arithmeticGame/arithmaticGame.module";
 import {DashboardComponent} from "../infrastructure/dashboard/dashboard.component";
 import {AuthMainComponent} from "../auth/authMain/authMain.component";
-import {AuthMainModule} from "../auth/authMain/authMain.module";
+import {AuthModule} from "../auth/auth.module";
 
 const routes: Routes = [
     { path: 'auth', component: AuthMainComponent },
@@ -22,7 +22,7 @@ const routes: Routes = [
             routes,
             { enableTracing: true } // <-- debugging purposes only
         ),
-        BrowserModule, ArithmaticGameModule, InfrastructureModule, AuthMainModule],
+        BrowserModule, ArithmaticGameModule, InfrastructureModule, AuthModule],
     declarations: [AppMain],
     bootstrap: [AppMain],
 })

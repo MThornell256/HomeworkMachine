@@ -1,9 +1,16 @@
 <div>
-    Username
-    <input type="text">
-    Password
-    <input type="password">
-    Retype Password
-    <input type="password">
-    <Button>Sign Up</Button>
+    <h1>Sign Up</h1>
+    <div>
+        Username
+        <input type="text" [(ngModel)]='username'>
+    </div>
+    <div>
+        Password
+        <input type="password" [(ngModel)]='password'>
+    </div>
+    <div>
+        Retype Password
+        <input type="password" [(ngModel)]='passwordRetype'>
+    </div>
+    <Button (click)="signUp()">Sign Up</Button>
 </div>

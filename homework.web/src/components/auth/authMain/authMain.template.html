@@ -1,11 +1,12 @@
 <div>
-    AUTH MAIN
     <div>
         <div>
-            <button>Log In</button>
-            <button>Sign Up</button>
+            <button (click)="mode = 'SIGN IN'">Log In</button>
+            <button (click)="mode = 'SIGN UP'">Sign Up</button>
+            <button (click)="mode = 'FORGOT PASSWORD'">Forgot Password</button>
         </div>
-        <!--<sign-in></sign-in>-->
-        <!--<sign-up></sign-up>-->
+        <sign-in *ngIf="mode === 'SIGN IN'"></sign-in>
+        <sign-up *ngIf="mode === 'SIGN UP'"></sign-up>
+        <div *ngIf="mode === 'FORGOT PASSWORD'">not implemented yet...</div>
     </div>
 </div>
