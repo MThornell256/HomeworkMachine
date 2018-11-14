@@ -21,6 +21,7 @@ module.exports = {
         extensions: [ '.ts', '.js' ],
         alias: {
             models: path.join(__dirname, "src", "models"),
+            services: path.join(__dirname, "src", "services"),
         },
     },
 };

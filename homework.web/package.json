@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server",
+    "start": "node start-live-server.js",
     "build": "webpack",
     "build:dev": "webpack -w",
     "build:prod": "webpack -p"
@@ -27,6 +27,7 @@
     "@angular/forms": "^7.0.2",
     "@angular/platform-browser": "^7.0.1",
     "@angular/platform-browser-dynamic": "^7.0.1",
+    "@angular/router": "^7.0.3",
     "core-js": "^2.5.7",
     "lodash": "^4.17.11",
     "rxjs": "^6.3.3",

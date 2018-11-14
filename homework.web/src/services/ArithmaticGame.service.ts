@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 
-import {AnswerState, GameRound, Opperator} from "../games/arithmeticGame/types";
 import {Injectable} from "@angular/core";
+import {AnswerState, GameRound, Opperator} from "../games/arithmeticGame/types";
 
 export interface ArithmaticGameGeneratorConfig {
     minValue: number;

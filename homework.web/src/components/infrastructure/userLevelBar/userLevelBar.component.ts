@@ -6,9 +6,13 @@ import { Component, OnInit } from  '@angular/core';
 })
 
 export class UserLevelBarComponent implements OnInit {
+
+    userLevel = 65;
+
     constructor() {
     }
 
     ngOnInit() {
+
     }
 }
