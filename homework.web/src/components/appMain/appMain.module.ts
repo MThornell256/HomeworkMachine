@@ -10,6 +10,7 @@ import {ArithmaticGameModule} from "../../games/arithmeticGame/arithmaticGame.mo
 import {DashboardComponent} from "../infrastructure/dashboard/dashboard.component";
 import {AuthMainComponent} from "../auth/authMain/authMain.component";
 import {AuthModule} from "../auth/auth.module";
+import {CommonModule} from "@angular/common";
 
 const routes: Routes = [
     { path: 'auth', component: AuthMainComponent },
@@ -22,7 +23,7 @@ const routes: Routes = [
             routes,
             { enableTracing: true } // <-- debugging purposes only
         ),
-        BrowserModule, ArithmaticGameModule, InfrastructureModule, AuthModule],
+        BrowserModule, ArithmaticGameModule, InfrastructureModule, AuthModule, CommonModule],
     declarations: [AppMain],
     bootstrap: [AppMain],
 })

@@ -15,4 +15,18 @@ exports.addAThing = (name, price) => {
         }).catch(result => {
             console.log(result);
         });
-}
+};
+/*
+exports.getAllThings = () => {
+    // probably retrun the promise object
+    Thing.find({ email: 'sumSting'})
+
+    Thing.find()
+        .select("_id name price")
+        .populate(' n')
+        .exec()
+        .then( response => {
+            // do sumthing
+        });
+};
+*/

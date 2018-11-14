@@ -1,5 +1,6 @@
 <div>
     <h1>Log In</h1>
+    <span *ngIf="setErrorMode">Username or Password is incorrect</span>
     <div>
         Username
         <input type="text" [(ngModel)]='username'>
